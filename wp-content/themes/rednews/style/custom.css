@@ -47,9 +47,9 @@ p {
 }
 
 /*
-========================================
+===============================================================================================================
 HEADER STYLES
-========================================
+===============================================================================================================
 */
 
 #navbar {
@@ -194,7 +194,7 @@ HEADER STYLES
   visibility: visible;
 }
 
-/* Media Queries */
+/* ------------- Responsive Navbar styles -------------------------------------------------------------------- */
 @media (max-width: 767px) {
   .desktop-nav {
     display: none;
@@ -212,5 +212,229 @@ HEADER STYLES
 
   .navbar-logo img {
     max-height: 80px;
+  }
+}
+
+/*
+===============================================================================================================
+FOOTER STYLES
+===============================================================================================================
+*/
+#footerSection {
+  background-color: var(--color-section-bg);
+}
+.footer-container {
+  padding: 25px 50px 15px 50px;
+}
+
+.footer-body {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.footer-heading {
+  font-size: 30px;
+  font-weight: bolder;
+  color: var(--color-highlight);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 14rem;
+}
+
+.footer-content p {
+  font-size: 16px;
+  width: 33.33%;
+  word-spacing: 6px;
+  color: var(--color-paragraph);
+}
+
+.footer-menu-1 {
+  width: 33.33%;
+  margin-top: -10px;
+}
+
+.footer-menu-1 ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-menu-1 ul li {
+  font-size: 17px;
+}
+
+.footer-menu-1 ul li a {
+  text-decoration: none;
+  color: var(--color-paragraph);
+  font-family: var(--font-secondary);
+}
+
+.footer-menu-1 ul li a:hover {
+  color: var(--color-hover);
+}
+
+.footer-social-link {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.footer-social-link img {
+  width: 3rem;
+  height: 5rem;
+}
+
+.footer-footnote {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer-footnote p {
+  font-size: 16px;
+  color: var(--color-social-icon-bg);
+  letter-spacing: 0.5px;
+}
+
+/* ------------- Responsive footer styles -------------------------------------------------------------------- */
+
+@media screen and (max-width: 768px) {
+  #footerSection {
+    padding: 15px 20px;
+  }
+
+  .footer-container {
+    padding: 20px;
+  }
+
+  .footer-body {
+    gap: 20px;
+  }
+
+  /* Align the paragraph at the top to the left */
+  .footer-heading {
+    text-align: left;
+    font-size: 24px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .footer-content p {
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* Display menu sections side by side */
+  .footer-menu-1 {
+    width: 48%;
+  }
+
+  .footer-menu-1 ul {
+    gap: 4px;
+  }
+
+  /* Social media icons aligned to the left */
+  .footer-social-link {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .footer-social-link img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  /* Copyright and Developed By stacked vertically */
+  .footer-footnote {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-footnote p {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  /* Ensure consistent spacing */
+  .footer-body > * {
+    margin-bottom: 10px;
+  }
+
+  /* Handle edge cases */
+  .footer-body p,
+  .footer-menu-1 ul li a {
+    word-wrap: break-word;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  #footerSection {
+    padding: 20px 40px;
+  }
+
+  .footer-container {
+    padding: 30px 40px;
+  }
+
+  .footer-body {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footer-heading {
+    text-align: left;
+    font-size: 28px;
+  }
+
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .footer-content p {
+    width: 33%;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .footer-menu-1 {
+    width: 25%;
+  }
+
+  .footer-menu-1 ul {
+    gap: 6px;
+  }
+
+  .footer-social-link {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .footer-social-link img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .footer-footnote {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .footer-footnote p {
+    font-size: 15px;
+    text-align: left;
   }
 }

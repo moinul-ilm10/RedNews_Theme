@@ -41,6 +41,8 @@ if (! function_exists('rednews_setup')) {
         register_nav_menus(
             [
                 'primary' => esc_html__('Header Menu', 'RedNews'),
+                'footer_menu_1'  => esc_html__('Footer Primary', 'RedNews'),
+                'footer_menu_2'  => esc_html__('Footer Secondary', 'RedNews'),
             ]
         );
     }
@@ -85,4 +87,79 @@ function rednews_scripts()
 add_action('wp_enqueue_scripts', 'rednews_scripts');
 
 
-// theme function
+//? theme function
+// Customize Footer Settings
+
+// Add footer settings to the Customizer
+function theme_customize_register($wp_customize)
+{
+    // Footer Heading
+    $wp_customize->add_setting('footer_heading', array(
+        'default' => 'Dive Into Skills',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('footer_heading', array(
+        'label' => __('Footer Heading', 'text-domain'),
+        'section' => 'footer_settings',
+        'type' => 'text',
+    ));
+
+    // Footer Description
+    $wp_customize->add_setting('footer_description', array(
+        'default' => 'The latest articles and courses to help you upgrade your skills.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ));
+    $wp_customize->add_control('footer_description', array(
+        'label' => __('Footer Description', 'text-domain'),
+        'section' => 'footer_settings',
+        'type' => 'textarea',
+    ));
+
+    // Footer Copyright Text
+    $wp_customize->add_setting('footer_copyright', array(
+        'default' => 'COPYRIGHT @ 2022 Dive Into Skills',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('footer_copyright', array(
+        'label' => __('Footer Copyright Text', 'text-domain'),
+        'section' => 'footer_settings',
+        'type' => 'text',
+    ));
+
+    // Footer Developed By Text
+    $wp_customize->add_setting('footer_developed_by', array(
+        'default' => 'Developed by: Ahmad Raza',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('footer_developed_by', array(
+        'label' => __('Footer Developed By', 'text-domain'),
+        'section' => 'footer_settings',
+        'type' => 'text',
+    ));
+
+    // Footer Social Links (Repeater-like input)
+    $wp_customize->add_setting('footer_social_links', array(
+        'default' => json_encode([]),
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control(new WP_Customize_Control($wp_customize, 'footer_social_links', array(
+        'label' => __('Social Links (JSON)', 'text-domain'),
+        'description' => __('Enter a JSON array of links with name, URL, and icon.', 'text-domain'),
+        'section' => 'footer_settings',
+        'type' => 'textarea',
+    )));
+
+    // Footer Section
+    $wp_customize->add_section('footer_settings', array(
+        'title' => __('Footer Settings', 'text-domain'),
+        'priority' => 130,
+    ));
+}
+add_action('customize_register', 'theme_customize_register');
+
+// Enqueue theme styles and scripts
+function theme_enqueue_custom_styles()
+{
+    wp_enqueue_style('custom-style', get_template_directory_uri() . '/style/custom.css');
+}
+add_action('wp_enqueue_scripts', 'theme_enqueue_custom_styles');
