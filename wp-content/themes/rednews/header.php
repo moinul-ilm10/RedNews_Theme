@@ -31,13 +31,20 @@
             </div>
             <!-- Regular navbar links for desktop -->
             <div class="navbar-link desktop-nav">
-                <ul>
+                <!-- <ul>
                     <li><a href="">Home</a></li>
                     <li><a href="./Blogs.html">Blogs</a></li>
                     <li><a href="./Courses.html">Courses</a></li>
                     <li><a href="./About.html">About</a></li>
                     <li><a href="./Contact.html">Contact</a></li>
-                </ul>
+                </ul> -->
+                <?php
+                wp_nav_menu(array(
+                    'theme_location' => 'primary',
+                    'menu_class' => 'navbar-link',
+                    'container' => false,
+                ));
+                ?>
             </div>
             <!-- Hamburger icon for mobile -->
             <div class="mobile-menu-icon">
@@ -53,12 +60,19 @@
             <i class="fa-solid fa-xmark close-drawer"></i>
         </div>
         <nav class="drawer-content">
-            <ul>
+            <!-- <ul>
                 <li><a href="">Home</a></li>
                 <li><a href="./Blogs.html">Blogs</a></li>
                 <li><a href="./Courses.html">Courses</a></li>
                 <li><a href="./About.html">About</a></li>
                 <li><a href="./Contact.html">Contact</a></li>
-            </ul>
+            </ul> -->
+            <?php
+            wp_nav_menu(array(
+                'theme_location' => 'primary',
+                'menu_class' => 'drawer-content',
+                'container' => false,
+            ));
+            ?>
         </nav>
     </div>

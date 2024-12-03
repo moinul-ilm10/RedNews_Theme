@@ -155,7 +155,7 @@ HEADER STYLES
 .drawer-content {
   padding: 45px;
   height: calc(100% - 64px);
-  overflow-y: auto;
+  /* overflow-y: auto; */
 }
 
 .drawer-content ul {
