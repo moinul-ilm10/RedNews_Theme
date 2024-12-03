@@ -10,8 +10,46 @@ if (
     define('_S_VERSION', '1.0.0');
 }
 
+if (! function_exists('rednews_setup')) {
+    function rednews_setup()
+    {
+
+        /**
+         * Make theme avaialbe for translations.
+         */
+        // load_theme_textdomain('rednews', get_template_directory() .  '/languages');
+
+        /**
+         * Include theme supports.
+         */
+        add_theme_support('automatic-feed-links'); // Add default posts and comments RSS feed links to head.
+        add_theme_support('title-tag'); // Let WordPress manage the document title.
+        add_theme_support('post-thumbnails'); // Enable support for Post Thumbnails on posts and pages.
+        add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio')); // Add post type format support.
+
+        /**
+         * Add support for core custom logo.
+         */
+        add_theme_support('custom-logo', [
+            'height'      => 250,
+            'width'       => 250,
+            'flex-width'  => true,
+            'flex-height' => true,
+        ]);
+
+        // Register manu locations.
+        register_nav_menus(
+            [
+                'primary' => esc_html__('Header Menu', 'RedNews'),
+            ]
+        );
+    }
+}
+add_action('after_setup_theme', 'rednews_setup');
+
+
 //theme title
-add_theme_support('title-tag');
+// add_theme_support('title-tag');
 
 // theme css and Jquery file calling
 function rednews_scripts()

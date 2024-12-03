@@ -20,7 +20,16 @@
     <header id="navbar">
         <div class="navbar-container">
             <div class="navbar-logo">
-                <a href=""><img src="<?php echo get_template_directory_uri(); ?>/assets/logo/RedNews_Logo.png" alt=""></a>
+                <a href="<?php echo home_url('/'); ?>">
+                    <?php
+                    if (function_exists('the_custom_logo') && has_custom_logo()) {
+                        the_custom_logo();
+                    } else {
+                        // Fallback: Display site name if no logo is set
+                        echo '<h1>' . get_bloginfo('name') . '</h1>';
+                    }
+                    ?>
+                </a>
             </div>
             <!-- Regular navbar links for desktop -->
             <div class="navbar-link desktop-nav">
