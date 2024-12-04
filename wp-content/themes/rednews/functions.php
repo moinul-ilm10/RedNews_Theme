@@ -163,3 +163,79 @@ function theme_enqueue_custom_styles()
     wp_enqueue_style('custom-style', get_template_directory_uri() . '/style/custom.css');
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_custom_styles');
+
+
+// Add Hero Section settings to the WordPress Customizer
+function rednews_hero_customize_register($wp_customize)
+{
+    // Create a new section for Hero Banner
+    $wp_customize->add_section('rednews_hero_section', array(
+        'title'    => __('Hero Banner', 'rednews'),
+        'priority' => 30,
+    ));
+
+    // Hero Heading Setting
+    $wp_customize->add_setting('rednews_hero_heading', array(
+        'default'           => 'The latest articles and courses to help you upgrade your skills.',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'refresh',
+    ));
+    $wp_customize->add_control('rednews_hero_heading', array(
+        'label'    => __('Hero Heading', 'rednews'),
+        'section'  => 'rednews_hero_section',
+        'type'     => 'text',
+    ));
+
+    // Hero Subheading Setting
+    $wp_customize->add_setting('rednews_hero_subheading', array(
+        'default'           => 'Master Web Development with amazing resources that are available for free! Join our Newsletter and get alerted when new articles, topics or courses are published.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+        'transport'         => 'refresh',
+    ));
+    $wp_customize->add_control('rednews_hero_subheading', array(
+        'label'    => __('Hero Subheading', 'rednews'),
+        'section'  => 'rednews_hero_section',
+        'type'     => 'textarea',
+    ));
+
+    // Hero Image Setting
+    $wp_customize->add_setting('rednews_hero_image', array(
+        'default'           => get_template_directory_uri() . '/assets/hero/hero_img.svg',
+        'sanitize_callback' => 'rednews_sanitize_image',
+        'transport'         => 'refresh',
+    ));
+    $wp_customize->add_control(
+        new WP_Customize_Image_Control(
+            $wp_customize,
+            'rednews_hero_image',
+            array(
+                'label'    => __('Hero Image', 'rednews'),
+                'section'  => 'rednews_hero_section',
+                'settings' => 'rednews_hero_image',
+            )
+        )
+    );
+}
+add_action('customize_register', 'rednews_hero_customize_register');
+
+// Custom image sanitization function
+function rednews_sanitize_image($input)
+{
+    // Allow only image file types
+    $valid_file_types = array('jpg', 'jpeg', 'png', 'gif', 'svg');
+
+    // If no image is uploaded, return the default
+    if (empty($input)) {
+        return get_template_directory_uri() . '/assets/hero/hero_img.svg';
+    }
+
+    // Get file extension
+    $file_extension = strtolower(pathinfo($input, PATHINFO_EXTENSION));
+
+    // Validate file type
+    if (!in_array($file_extension, $valid_file_types)) {
+        return get_template_directory_uri() . '/assets/hero/hero_img.svg';
+    }
+
+    return esc_url_raw($input);
+}
