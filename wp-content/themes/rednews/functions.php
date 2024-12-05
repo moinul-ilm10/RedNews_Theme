@@ -239,3 +239,93 @@ function rednews_sanitize_image($input)
 
     return esc_url_raw($input);
 }
+
+// Add custom meta boxes for About Page additional fields
+function rednews_about_page_meta_boxes()
+{
+    add_meta_box(
+        'rednews_about_additional_info',
+        'Additional About Page Information',
+        'rednews_about_meta_box_callback',
+        'page',
+        'normal',
+        'default'
+    );
+}
+add_action('add_meta_boxes', 'rednews_about_page_meta_boxes');
+
+// Callback function to display custom meta box
+function rednews_about_meta_box_callback($post)
+{
+    // Add a nonce field for security
+    wp_nonce_field('rednews_about_meta_box', 'rednews_about_meta_box_nonce');
+
+    // Retrieve existing meta values
+    $mission = get_post_meta($post->ID, 'rednews_about_mission', true);
+    $vision = get_post_meta($post->ID, 'rednews_about_vision', true);
+?>
+    <table class="form-table">
+        <tr>
+            <th><label for="rednews_about_mission">Our Mission</label></th>
+            <td>
+                <textarea
+                    id="rednews_about_mission"
+                    name="rednews_about_mission"
+                    rows="4"
+                    class="large-text"><?php echo esc_textarea($mission); ?></textarea>
+            </td>
+        </tr>
+        <tr>
+            <th><label for="rednews_about_vision">Our Vision</label></th>
+            <td>
+                <textarea
+                    id="rednews_about_vision"
+                    name="rednews_about_vision"
+                    rows="4"
+                    class="large-text"><?php echo esc_textarea($vision); ?></textarea>
+            </td>
+        </tr>
+    </table>
+<?php
+}
+
+// Save custom meta box data
+function rednews_save_about_page_meta_box($post_id)
+{
+    // Check nonce for security
+    if (
+        !isset($_POST['rednews_about_meta_box_nonce']) ||
+        !wp_verify_nonce($_POST['rednews_about_meta_box_nonce'], 'rednews_about_meta_box')
+    ) {
+        return;
+    }
+
+    // Check autosave
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    // Check user permissions
+    if (!current_user_can('edit_page', $post_id)) {
+        return;
+    }
+
+    // Save/update mission field
+    if (isset($_POST['rednews_about_mission'])) {
+        update_post_meta(
+            $post_id,
+            'rednews_about_mission',
+            sanitize_textarea_field($_POST['rednews_about_mission'])
+        );
+    }
+
+    // Save/update vision field
+    if (isset($_POST['rednews_about_vision'])) {
+        update_post_meta(
+            $post_id,
+            'rednews_about_vision',
+            sanitize_textarea_field($_POST['rednews_about_vision'])
+        );
+    }
+}
+add_action('save_post', 'rednews_save_about_page_meta_box');
