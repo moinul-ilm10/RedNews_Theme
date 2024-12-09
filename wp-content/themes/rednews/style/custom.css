@@ -665,7 +665,7 @@ SOCIAL MEDIA ICON STYLES
 
 /*
 ===============================================================================================================
-COURSES STYLES
+LATEST COURSES HOME SECTION STYLES
 ===============================================================================================================
 */
 #latestCourses {
@@ -796,6 +796,234 @@ COURSES STYLES
   .latest-courses-btn {
     width: 40%;
   }
+}
+
+/*
+===============================================================================================================
+COURSES BLOGS PAGE STYLES
+===============================================================================================================
+*/
+#blogsPage {
+  overflow-x: hidden;
+}
+
+.blog-page-container {
+  padding: 70px 110px;
+  display: flex;
+  flex-direction: column;
+}
+
+.blogs-page-heading {
+  font-size: 44px;
+  font-weight: bold;
+  color: var(--color-section-bg);
+  text-align: center;
+}
+
+.blog-page-content {
+  display: flex;
+  flex-direction: row;
+  /* gap: 20px; */
+}
+
+.blog-page-category {
+  flex-basis: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 70px;
+}
+
+.blog-category-heading {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.blog-category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-left: 7px;
+}
+
+.blog-category-list li {
+  list-style: none;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: var(--font-secondary);
+}
+
+.course-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 70px;
+}
+
+.blog-post-container {
+  flex-basis: 80%;
+  display: grid;
+  grid-template-columns: repeat(3, 3fr);
+  grid-template-rows: repeat(3, 3fr);
+  gap: 20px 20px;
+}
+
+.blog-page-btn {
+  border-radius: 15px;
+  background: var(--color-section-bg);
+  padding: 14px 31px;
+  width: 18%;
+  height: 65px;
+  cursor: pointer;
+}
+
+.blog-page-btn button {
+  background: var(--color-section-bg);
+  color: var(--color-highlight);
+  font-size: 20px;
+  border: 0;
+  outline: none;
+  margin-left: 20px;
+  margin-top: 3px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  font-family: var(--font-secondary);
+}
+
+@media screen and (max-width: 767px) {
+  .blog-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 10px 10px;
+  }
+
+  /* .latest-blog-btn {
+    width: 40%;
+  } */
+
+  .blog-page-btn {
+    width: 40%;
+  }
+
+  .latest-blog-heading {
+    font-size: 30px;
+  }
+}
+
+/* ---------------------- latest blogs and  blog page home section style -------------------------------*/
+#latestBlogs {
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.latest-blogs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.latest-blog-heading {
+  color: var(--color-section-bg);
+  font-size: 45px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.blog-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 20px 20px;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  border: 0px;
+  outline: none;
+  border-radius: 20px;
+  width: 350px;
+  height: 500px;
+  transition: all 0.4s ease-in-out;
+  opacity: 1;
+  box-sizing: border-box;
+}
+
+.blog-card img {
+  width: 350px;
+  height: auto;
+}
+
+.card-img {
+  position: relative;
+}
+
+.card-label {
+  position: absolute;
+  bottom: 10px;
+  background-color: var(--color-section-bg);
+  color: var(--color-highlight);
+  border-radius: 0px 20px 20px 0px;
+  width: 132px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-secondary);
+  font-size: 17px;
+  font-weight: 500;
+  z-index: 1;
+  padding: 2px;
+}
+
+.card-content {
+  background: var(--color-card-bg);
+  padding: 15px;
+  margin-top: -5px;
+  border-radius: 0px 0px 20px 20px;
+}
+
+.card-heading {
+  color: var(--color-section-bg);
+  font-size: 30px;
+}
+
+.card-content p {
+  color: #446129;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.latest-blog-btn {
+  border-radius: 15px;
+  background: var(--color-section-bg);
+  padding: 10px;
+  width: 10%;
+  height: 30px;
+  cursor: pointer;
+  margin-top: -105px;
+}
+
+.latest-blog-btn button {
+  background: var(--color-section-bg);
+  color: var(--color-highlight);
+  font-size: 20px;
+  border: 0;
+  outline: none;
+  margin-left: 20px;
+  margin-top: 3px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
 }
 
 /*

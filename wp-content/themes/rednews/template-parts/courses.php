@@ -28,7 +28,7 @@ get_header();
                     <li>Category 1</li>
                 </ul>
             </aside>
-            <div class="blog-page-container">
+            <div class="course-grid">
                 <div class="blog-post-container">
                     <div class="blog-card">
                         <div class="card-img">
@@ -202,7 +202,7 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <div class="latest-blog-btn"><button type="submit">Load More</button></div>
+                <div class="blog-page-btn"><button type="submit">Load More</button></div>
             </div>
         </div>
     </div>
