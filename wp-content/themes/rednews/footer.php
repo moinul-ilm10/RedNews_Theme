@@ -22,7 +22,7 @@
                     wp_nav_menu(array(
                         'theme_location' => 'footer_menu_1',
                         'menu_class' => '',
-                        'container' => 'ul', // Keep the same structure as HTML template
+                        'container' => 'ul',
                     ));
                     ?>
                 </div>
@@ -39,13 +39,13 @@
 
             <!-- Social Links -->
             <div class="footer-social-link">
-                <img src="./assets/social/akar-icons_facebook-fill.svg" alt="facebook_icon">
-                <img src="./asset/social/akar-icons_instagram-fill.svg" alt="instagram_icon">
-                <img src="./asset/social/akar-icons_twitter-fill.svg" alt="twitter_icon">
-                <img src="./asset/social/akar-icons_linkedin-box-fill.svg" alt="linkedIn_icon">
-                <img src="./asset/social/akar-icons_youtube-fill.svg" alt="YouTube_icon">
-                <img src="./asset/social/akar-icons_slack-fill.svg" alt="slack_icon">
-                <img src="./asset/social/akar-icons_discord-fill.svg" alt="discord_icon">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/social/akar-icons_facebook-fill.svg" alt="facebook_icon">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/social/akar-icons_instagram-fill.svg" alt="instagram_icon">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/social/akar-icons_twitter-fill.svg" alt="twitter_icon">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/social/akar-icons_linkedin-box-fill.svg" alt="linkedIn_icon">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/social/akar-icons_youtube-fill.svg" alt="YouTube_icon">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/social/akar-icons_slack-fill.svg" alt="slack_icon">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/social/akar-icons_discord-fill.svg" alt="discord_icon">
             </div>
 
             <!-- Footnote -->
